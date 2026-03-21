@@ -7,13 +7,13 @@ layout: default
 
 ### preprints & under review
 
-**Verosky, N., Raccah, O.** (Under Review). Opinion: Music, language, and the structure of episodic memory. [PsyArXiv](https://psyarxiv.com){:target="_blank"}
+Xue, A.M., Hsu, S., Rarocque, K.F., **Raccah, O.**, Gonzalez, A., Parvizi, J., & Wagner, A. (2026; Submitted). Hippocampal patterns and associative memory: Distinct intracranial EEG temporal encoding patterns support memory. [BioRxiv](https://biorxiv.org){:target="_blank"}
 
-**Raccah, O.\***, Chen, P.\*, Vo, A.V., Poeppel, D., & Gureckis, M. T. (Revised, *Nature Communications*). Distinct paths to false memory revealed in hundreds of narrative recollections. [PsyArXiv](https://psyarxiv.com){:target="_blank"}
+**Raccah, O.**, Agarwal, A., Zhu, Y., & Turk-Browne, N. (2026; Under review). Multisensory coding in the human hippocampus. [BioRxiv](https://biorxiv.org){:target="_blank"}
 
-**Raccah, O.**, Agarwal, A., Zhu, Y., & Turk-Browne, N. (Revised, *PLoS Biology*). Multisensory coding in the human hippocampus. [BioRxiv](https://biorxiv.org){:target="_blank"}
+**Raccah, O.\***, Chen, P.\*, Vo, A.V., Poeppel, D., & Gureckis, M. T. (2025; Under review). Distinct paths to false memory revealed in hundreds of narrative recollections. [PsyArXiv](https://psyarxiv.com){:target="_blank"}
 
-Cao, W., **Raccah, O.**, Chen, P., Poeppel, D., & Tompary, A. (Revised, *Memory & Cognition*). The privileged role of thematic conceptual relations in episodic memory. [PsyArXiv](https://psyarxiv.com){:target="_blank"}
+Cao, W., **Raccah, O.**, Chen, P., Poeppel, D., & Tompary, A. (2025; In revision). The privileged role of thematic conceptual relations in episodic memory. [PsyArXiv](https://psyarxiv.com){:target="_blank"}
 
 ***
 
@@ -21,7 +21,7 @@ Cao, W., **Raccah, O.**, Chen, P., Poeppel, D., & Tompary, A. (Revised, *Memory 
 
 **Raccah, O.\***, Seltenreich M.\*, Pelofi, C., Lerdahl, F., & Poeppel, D. (2025). Geometric principles of musical scales constitute a representational primitive in melodic processing. *iScience*.
 
-**Raccah, O.**, Chen, P., Gureckis, M. T., Poeppel, D., & Vo, A.V. (2024). The 'Naturalistic Free Recall' dataset: four stories, hundreds of participants, and high-fidelity transcriptions. *Nature Scientific Data*.
+**Raccah, O.\***, Chen, P.\*, Gureckis, M. T., Poeppel, D., & Vo, A.V. (2024). The 'Naturalistic Free Recall' dataset: four stories, hundreds of participants, and high-fidelity transcriptions. *Nature Scientific Data*.
 
 Salehi, S., Chen, P., **Raccah, O.**, & Poeppel, D. (2024). Spatiotemporal hierarchies of face representation in the human ventral temporal cortex. *Nature Scientific Reports*.
 
