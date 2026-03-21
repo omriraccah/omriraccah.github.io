@@ -1,4 +1,4 @@
-## hello!
+## about me
 ***
 
 I'm a **Postdoctoral Researcher** in the [Turk-Browne Lab](https://ntblab.yale.edu/){:target="_blank"} in the [Department of Psychology](https://psychology.yale.edu/){:target="_blank"} at **Yale University**.
