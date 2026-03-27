@@ -1,10 +1,10 @@
 ## about me
 ***
 
-I'm a **Postdoctoral Researcher** in the [Turk-Browne Lab](https://ntblab.yale.edu/){:target="_blank"} in the [Department of Psychology](https://psychology.yale.edu/){:target="_blank"} at **Yale University**.
+I am a postdoctoral fellow at [Yale University](https://www.yale.edu/){:target="_blank"}, [Department of Psychology](https://psychology.yale.edu/){:target="_blank"}, supported by a [NIH Ruth L. Kirschstein Postdoctoral NRSA Award](https://researchtraining.nih.gov/programs/fellowships/F32){:target="_blank"} from the [National Eye Institute](https://www.nei.nih.gov/){:target="_blank"}.
 
-I investigate how the human episodic memory system supports the integration, representation, and retrieval of structured sequences. My work combines psychophysical experiments, neuroimaging (MEG, fMRI, ECoG), computational modeling, and deep learning.
+My research is dedicated to understanding how the brain transforms the rich, time-varying experience is transformed into lasting episodic memories. Addressing this question requires integrating approaches from cognitive science, neuroscience, and machine learning. My work is further grounded in the view that memory does not operate in isolation from other cognitive systems, including perception and attention, and therefore seeks to understand their interaction.
 
-I received my Ph.D. from [New York University](https://www.nyu.edu/){:target="_blank"} in 2023.
+In my postdoctoral work with [Nicholas Turk-Browne](https://ntblab.yale.edu/){:target="_blank"}, I study how the brain's memory system integrates across complex multisensory input. During my Ph.D. at [New York University](https://www.nyu.edu/){:target="_blank"} with [David Poeppel](https://as.nyu.edu/faculty/david-poeppel.html){:target="_blank"}, supported by an [NSF Graduate Research Fellowship](https://www.nsfgrfp.org/){:target="_blank"}, I worked on understanding how the episodic memory system supports the encoding, representation, and retrieval of structured sequences. My work combines psychophysical experiments, neuroimaging (fMRI and human electrophysiology), computational modeling, and deep learning.
 
 ***
