@@ -30,7 +30,7 @@ h1, h2, h3 {
 
 h1 {
   font-size:28px;
-  font-weight:540;
+  font-weight:400;
 }
 
 h1:lang(zh), .chinese {
@@ -39,18 +39,18 @@ h1:lang(zh), .chinese {
 }
 
 h1:hover, h1:focus {
-  font-weight: 540;
+  font-weight: 400;
 }
 
 h2 {
   font-size:22px;
-  font-weight:540;
+  font-weight:400;
   color:#3D6CD9;
 }
 
 h3, h4, h5, h6 {
   color:#3D6CD9;
-  font-weight:550;
+  font-weight:400;
 }
 
 a {
@@ -291,6 +291,39 @@ footer {
   .downloads li, .downloads li + li + li {
     width:33%;
   }
+}
+
+/* Load & scroll animations */
+@keyframes drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes opacity-load {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+header > img {
+  animation: drop-in 0.8s ease 0.1s both;
+}
+
+header h1 {
+  animation: drop-in 0.8s ease 0.25s both;
+}
+
+header p {
+  animation: drop-in 0.8s ease 0.4s both;
+}
+
+section {
+  animation: opacity-load 0.9s ease 0.5s both;
 }
 
 @media print {
