@@ -290,6 +290,52 @@ footer {
   }
 }
 
+/* Top navigation */
+.top-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  padding: 1em 2.5em;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 2rem;
+  }
+
+  a {
+    color: #424242;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 400;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: #3D6CD9;
+      border-radius: 9999px;
+      transition: width 0.5s;
+    }
+
+    &:hover {
+      color: #424242;
+      font-weight: 400 !important;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
+
 /* Load & scroll animations */
 @keyframes drop-in {
   from {
