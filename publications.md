@@ -5,7 +5,7 @@ layout: default
 ## Publications
 ***
 
-### Preprints & Under Review
+### Preprints & under review
 
 Xue, A.M., Hsu, S., Rarocque, K.F., **Raccah, O.**, Gonzalez, A., Parvizi, J., & Wagner, A. (2026; Submitted). Hippocampal patterns and associative memory: Distinct intracranial EEG temporal encoding patterns support memory. [BioRxiv](https://www.biorxiv.org/content/10.64898/2026.03.18.712716v1){:target="_blank"}
 
@@ -17,7 +17,7 @@ Cao, W., **Raccah, O.**, Chen, P., Poeppel, D., & Tompary, A. (2025; In revision
 
 ***
 
-### Published Papers
+### Published papers
 
 **Raccah, O.\***, Seltenreich M.\*, Pelofi, C., Lerdahl, F., & Poeppel, D. (2025). Geometric principles of musical scales constitute a representational primitive in melodic processing. *iScience*. [Link](https://www.cell.com/iscience/fulltext/S2589-0042(25)01962-5){:target="_blank"}
 
