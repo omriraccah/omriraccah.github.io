@@ -8,10 +8,3 @@ My research is dedicated to understanding how the brain transforms the rich, mul
 In my postdoctoral work with [Nicholas Turk-Browne](https://ntblab.yale.edu/){:target="_blank"}, I study how the brain's memory system integrates across multiple sensory inputs to support perception and memory. During my Ph.D. at New York University with [David Poeppel](https://as.nyu.edu/faculty/david-poeppel.html){:target="_blank"}, supported by an [NSF Graduate Research Fellowship](https://www.nsfgrfp.org/){:target="_blank"}, I worked on understanding how the episodic memory system supports the encoding, representation, and retrieval of structured auditory sequences. My work combines psychophysical experiments, neuroimaging (fMRI and human electrophysiology), computational modeling, and deep learning.
 
 ***
-
-## recent & upcoming
-***
-
-- **Apr 2026:** [Add event here]
-
-***
