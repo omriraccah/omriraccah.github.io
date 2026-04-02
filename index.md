@@ -1,7 +1,7 @@
 ## about me
 ***
 
-I am a postdoctoral fellow at the [Department of Psychology](https://psychology.yale.edu/){:target="_blank"} at Yale University, supported by a [NIH Ruth L. Kirschstein Postdoctoral NRSA Award](https://researchtraining.nih.gov/programs/fellowships/F32){:target="_blank"} from the [National Eye Institute](https://www.nei.nih.gov/){:target="_blank"}.
+I am a postdoctoral fellow at the [Department of Psychology](https://psychology.yale.edu/){:target="_blank"}<br>Yale University, supported by a [NIH Ruth L. Kirschstein Postdoctoral NRSA Award](https://researchtraining.nih.gov/programs/fellowships/F32){:target="_blank"} from the [National Eye Institute](https://www.nei.nih.gov/){:target="_blank"}.
 
 My research is dedicated to understanding how the brain transforms the rich, multisensory, and time-varying experience into lasting episodic memories. Understanding this problem requires integrating approaches from cognitive science, neuroscience, and machine learning. My work is further grounded in the view that memory systems operate in conjunction with other faculties, such as perception and attention, and therefore, seeks to understand their interaction.
 
