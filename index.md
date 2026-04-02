@@ -1,4 +1,4 @@
-## about me
+## About Me
 ***
 
 I am a postdoctoral fellow at the [Department of Psychology](https://psychology.yale.edu/){:target="_blank"}<br>Yale University, supported by a [NIH Ruth L. Kirschstein Postdoctoral NRSA Award](https://researchtraining.nih.gov/programs/fellowships/F32){:target="_blank"} from the [National Eye Institute](https://www.nei.nih.gov/){:target="_blank"}.
