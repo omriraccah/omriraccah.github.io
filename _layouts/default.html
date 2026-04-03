@@ -48,7 +48,6 @@
     <img src="/files/osf.svg" style="height:25px; width:auto;">&nbsp</a>
         </p>
 
-        <canvas id="sidebar-wave" width="260" height="60" style="margin-top:10px;"></canvas>
 
       </header>
       <section>
@@ -61,31 +60,6 @@
        </footer>
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
-    <script>
-      (function() {
-        var c = document.getElementById('sidebar-wave');
-        if (!c) return;
-        var ctx = c.getContext('2d');
-        var W = c.width, H = c.height, t = 0;
-        function draw() {
-          ctx.clearRect(0, 0, W, H);
-          ctx.beginPath();
-          for (var x = 0; x < W; x++) {
-            var y = H / 2
-              + Math.sin(x * 0.025 + t * 0.008) * 10
-              + Math.sin(x * 0.015 - t * 0.005) * 6
-              + Math.sin(x * 0.05 + t * 0.012) * 3;
-            x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-          }
-          ctx.strokeStyle = 'rgba(61,108,217,0.25)';
-          ctx.lineWidth = 1.5;
-          ctx.stroke();
-          t++;
-          requestAnimationFrame(draw);
-        }
-        draw();
-      })();
-    </script>
     <script>
       document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
