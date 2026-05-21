@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Knowledge Graph Animation</title>
+<style>
+  * { margin: 0; padding: 0; }
+  body { background: #fff; overflow: hidden; }
+  canvas { display: block; }
+  #rec-btn {
+    position: fixed; bottom: 24px; right: 24px; z-index: 10;
+    padding: 10px 22px; border: none; border-radius: 6px; cursor: pointer;
+    font: 15px/1 sans-serif; color: #fff; background: #3D6CD9;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15); transition: background .2s;
+  }
+  #rec-btn:hover { background: #2a54b0; }
+  #rec-btn.recording { background: #c0392b; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<button id="rec-btn">Record 15s Video</button>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+
+let W, H;
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+const NODE_COUNT = 35;
+const CONNECTION_DIST = 300;
+
+const clusterDefs = [
+  { cx: 0.3, cy: 0.38, spread: 0.18 },
+  { cx: 0.65, cy: 0.32, spread: 0.17 },
+  { cx: 0.5, cy: 0.68, spread: 0.16 },
+];
+
+function clusterPoint() {
+  const cl = clusterDefs[Math.floor(Math.random() * clusterDefs.length)];
+  const angle = Math.random() * Math.PI * 2;
+  const r = Math.sqrt(Math.random()) * cl.spread * Math.min(W, H);
+  return {
+    x: W * cl.cx + Math.cos(angle) * r,
+    y: H * cl.cy + Math.sin(angle) * r
+  };
+}
+
+class Node {
+  constructor() {
+    const p = clusterPoint();
+    this.x = p.x;
+    this.y = p.y;
+    this.homeX = p.x;
+    this.homeY = p.y;
+    this.vx = (Math.random() - 0.5) * 0.25;
+    this.vy = (Math.random() - 0.5) * 0.25;
+    this.phase = Math.random() * Math.PI * 2;
+    this.wobbleAmp = 0.28 + Math.random() * 0.35;
+    this.wobbleFreqX = 0.00035 + Math.random() * 0.0004;
+    this.wobbleFreqY = 0.00028 + Math.random() * 0.00035;
+    this.pulsePhase = Math.random() * Math.PI * 2;
+    this.pulseSpeed = 0.008 + Math.random() * 0.012;
+
+    // Depth: 0 = far, 1 = close
+    this.depth = Math.random();
+    const depthScale = 0.5 + this.depth * 0.5;
+    this.baseRadius = (6 + Math.random() * 8) * depthScale;
+    this.radius = this.baseRadius;
+    this.baseAlpha = 0.4 + this.depth * 0.6;
+
+    const hue = 210 + (Math.random() - 0.5) * 30;
+    const sat = 25 + Math.random() * 20;
+    const lit = 55 + Math.random() * 15;
+    this.hue = hue;
+    this.sat = sat;
+    this.lit = lit;
+
+    this.activation = 0;
+    this.activationDecay = 0.985;
+  }
+
+  activate(strength) {
+    this.activation = Math.min(1, this.activation + strength);
+  }
+
+  update(t) {
+    this.x += this.vx + Math.sin(t * this.wobbleFreqX + this.phase) * this.wobbleAmp;
+    this.y += this.vy + Math.cos(t * this.wobbleFreqY + this.phase * 1.3) * this.wobbleAmp * 0.8;
+
+    this.vx += (this.homeX - this.x) * 0.00012;
+    this.vy += (this.homeY - this.y) * 0.00012;
+    this.vx *= 0.994;
+    this.vy *= 0.994;
+
+    this.pulsePhase += this.pulseSpeed;
+    this.radius = this.baseRadius * (1 + 0.12 * Math.sin(this.pulsePhase));
+
+    this.activation *= this.activationDecay;
+    if (this.activation < 0.01) this.activation = 0;
+  }
+
+  draw() {
+    const alpha = this.baseAlpha;
+    const act = this.activation;
+
+    // Activation glow
+    if (act > 0.05) {
+      const glowR = this.radius * (3 + act * 5);
+      const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, glowR);
+      grad.addColorStop(0, `hsla(${this.hue}, ${this.sat + 15}%, ${this.lit + 15}%, ${act * 0.3})`);
+      grad.addColorStop(1, `hsla(${this.hue}, ${this.sat}%, ${this.lit}%, 0)`);
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, glowR, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Shadow
+    ctx.beginPath();
+    ctx.arc(this.x + 1.5, this.y + 2, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(100, 120, 160, ${0.08 * alpha})`;
+    ctx.fill();
+
+    // Node body
+    const litBoost = act * 20;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `hsla(${this.hue}, ${this.sat + act * 10}%, ${this.lit + litBoost}%, ${alpha})`;
+    ctx.fill();
+    ctx.strokeStyle = `hsla(${this.hue}, ${this.sat - 5}%, ${this.lit - 12 + litBoost}%, ${alpha * 0.7})`;
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+  }
+}
+
+class Edge {
+  constructor(a, b) {
+    this.a = a;
+    this.b = b;
+    this.life = 0;
+    this.maxLife = 250 + Math.random() * 350;
+    this.curvature = (Math.random() - 0.5) * 60;
+  }
+
+  get alive() { return this.life < this.maxLife; }
+
+  get strength() {
+    const fadeIn = 50;
+    const fadeOut = 70;
+    if (this.life < fadeIn) return this.life / fadeIn;
+    if (this.life > this.maxLife - fadeOut) return (this.maxLife - this.life) / fadeOut;
+    return 1;
+  }
+
+  update() { this.life++; }
+
+  draw() {
+    const s = this.strength;
+    if (s < 0.01) return;
+
+    const dist = Math.hypot(this.a.x - this.b.x, this.a.y - this.b.y);
+    const proxFactor = Math.max(0.3, 1 - dist / CONNECTION_DIST);
+    const depthAlpha = Math.min(this.a.baseAlpha, this.b.baseAlpha);
+    const alpha = s * proxFactor * 0.45 * depthAlpha;
+    const width = (1.2 + proxFactor * 2.5) * s;
+
+    const mx = (this.a.x + this.b.x) / 2;
+    const my = (this.a.y + this.b.y) / 2;
+    const dx = this.b.x - this.a.x;
+    const dy = this.b.y - this.a.y;
+    const len = Math.sqrt(dx * dx + dy * dy) || 1;
+
+    ctx.beginPath();
+    ctx.moveTo(this.a.x, this.a.y);
+    ctx.quadraticCurveTo(mx + (-dy / len) * this.curvature, my + (dx / len) * this.curvature, this.b.x, this.b.y);
+    ctx.strokeStyle = `rgba(140, 155, 185, ${alpha})`;
+    ctx.lineWidth = width;
+    ctx.stroke();
+  }
+}
+
+const nodes = [];
+for (let i = 0; i < NODE_COUNT; i++) nodes.push(new Node());
+nodes.sort((a, b) => a.depth - b.depth);
+
+let edges = [];
+let frame = 0;
+
+// Seed initial edges
+for (let i = 0; i < nodes.length; i++) {
+  for (let j = i + 1; j < nodes.length; j++) {
+    const d = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+    if (d < CONNECTION_DIST * 0.6 && Math.random() < 0.25) {
+      const e = new Edge(nodes[i], nodes[j]);
+      e.life = Math.floor(Math.random() * e.maxLife * 0.3);
+      edges.push(e);
+    }
+  }
+}
+
+function getNeighbors(node) {
+  const neighbors = [];
+  for (const e of edges) {
+    if (!e.alive) continue;
+    if (e.a === node) neighbors.push(e.b);
+    else if (e.b === node) neighbors.push(e.a);
+  }
+  return neighbors;
+}
+
+let nextFire = 120 + Math.random() * 180;
+
+function triggerRipple() {
+  const source = nodes[Math.floor(Math.random() * nodes.length)];
+  source.activate(1);
+  function spread(node, strength, depth) {
+    if (depth > 3 || strength < 0.15) return;
+    const nb = getNeighbors(node);
+    for (const n of nb) {
+      setTimeout(() => {
+        n.activate(strength);
+        spread(n, strength * 0.5, depth + 1);
+      }, 200 + Math.random() * 150);
+    }
+  }
+  spread(source, 0.6, 0);
+}
+
+function tryNewEdges() {
+  if (edges.length > 50) return;
+  const a = nodes[Math.floor(Math.random() * nodes.length)];
+  let candidates = [];
+  for (const b of nodes) {
+    if (b === a) continue;
+    const d = Math.hypot(a.x - b.x, a.y - b.y);
+    if (d < CONNECTION_DIST) {
+      const exists = edges.some(e => e.alive && ((e.a === a && e.b === b) || (e.a === b && e.b === a)));
+      if (!exists) candidates.push({ node: b, dist: d });
+    }
+  }
+  if (candidates.length > 0) {
+    candidates.sort((a, b) => a.dist - b.dist);
+    const pick = candidates[Math.floor(Math.random() * Math.min(3, candidates.length))];
+    edges.push(new Edge(a, pick.node));
+  }
+}
+
+function animate(t) {
+  ctx.clearRect(0, 0, W, H);
+
+  for (const n of nodes) n.update(t);
+
+  if (frame % 8 === 0) tryNewEdges();
+  edges = edges.filter(e => e.alive);
+  for (const e of edges) e.update();
+
+  nextFire--;
+  if (nextFire <= 0) {
+    triggerRipple();
+    nextFire = 200 + Math.random() * 300;
+  }
+
+  for (const e of edges) e.draw();
+  for (const n of nodes) n.draw();
+
+  frame++;
+  requestAnimationFrame(animate);
+}
+
+requestAnimationFrame(animate);
+
+// --- Video recorder ---
+const btn = document.getElementById('rec-btn');
+let recorder = null;
+btn.addEventListener('click', () => {
+  if (recorder && recorder.state === 'recording') return;
+  const stream = canvas.captureStream(60);
+  const chunks = [];
+  recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp9', videoBitsPerSecond: 8_000_000 });
+  recorder.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
+  recorder.onstop = () => {
+    const blob = new Blob(chunks, { type: 'video/webm' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'knowledge-graph.webm';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    btn.textContent = 'Record 15s Video';
+    btn.classList.remove('recording');
+  };
+  recorder.start();
+  btn.textContent = 'Recording...';
+  btn.classList.add('recording');
+  setTimeout(() => { if (recorder.state === 'recording') recorder.stop(); }, 15000);
+});
+</script>
+</body>
+</html>
