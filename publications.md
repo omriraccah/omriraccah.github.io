@@ -33,6 +33,8 @@ Cao, W., **Raccah, O.**, Chen, P., & Poeppel, D. (2023). Thematic relations outp
 
 Norman, I., **Raccah, O.**, Parvizi, J., & Malach, R. (2021). Hippocampal ripples and their coordinated dialogue with the default mode network during recent and remote recollection. *Neuron*, 46, e13085. [Link](https://www.cell.com/neuron/fulltext/S0896-6273(21)00461-X){:target="_blank"}
 
+**Raccah, O.**, Block, N., & Fox, K. C.R. (2021). Subjective phenomena elicited by intracranial electrical stimulation challenge a global neuronal workspace hypothesis: A reply to objections raised by Naccache et al. *Journal of Neuroscience (eLetter)*. [Link](https://www.jneurosci.org/content/41/10/2076#tab-e-letters){:target="_blank"}
+
 **Raccah, O.**, Block, N., & Fox, K. C.R. (2021). Does the prefrontal cortex play an essential role in consciousness? Insights from intracranial stimulation of the human brain. *Journal of Neuroscience*, 1(4). [Link](https://www.jneurosci.org/content/41/10/2076){:target="_blank"}
 
 Fox, K. C.R., Shi, L., Baek, S., **Raccah, O.**, Foster, B., Saha, S., Margulies, D., Kucyi, A., & Parvizi, J. (2020). Hierarchical cortical gradients predict the subjective effects of intracranial electrical stimulation in the human brain. *Nature Human Behavior*, 1(4). [Link](https://www.nature.com/articles/s41562-020-0910-1){:target="_blank"}

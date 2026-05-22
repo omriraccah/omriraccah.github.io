@@ -16,7 +16,9 @@
     <![endif]-->
   </head>
   <body>
+    {% if page.url == "/" or page.url == "/index.html" %}
     <canvas id="graph-bg"></canvas>
+    {% endif %}
     <nav class="top-nav drop-in">
       <ul>
         <li><a href="/publications.html">Publications</a></li>
