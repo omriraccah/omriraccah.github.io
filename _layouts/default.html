@@ -16,9 +16,6 @@
     <![endif]-->
   </head>
   <body>
-    {% if page.url == "/" or page.url == "/index.html" %}
-    <canvas id="graph-bg"></canvas>
-    {% endif %}
     <nav class="top-nav drop-in">
       <ul>
         <li><a href="/publications.html">Publications</a></li>
@@ -62,6 +59,9 @@
 
        </footer>
     </div>
+    {% if page.url == "/" or page.url == "/index.html" %}
+    <canvas id="graph-bg"></canvas>
+    {% endif %}
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
     <script>
       document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
@@ -80,17 +80,24 @@
       if (!c) return;
       var ctx = c.getContext('2d');
       var W, H;
-      function resize() { W = c.width = window.innerWidth; H = c.height = window.innerHeight; }
+      var BAND_H = 350, FADE = 60;
+      function resize() { W = c.width = c.offsetWidth; H = c.height = BAND_H; }
       resize();
       window.addEventListener('resize', resize);
 
-      var NODE_COUNT = 25, CONN_DIST = 260;
-      var cls = [{ cx:0.3,cy:0.38,s:0.2 },{ cx:0.65,cy:0.32,s:0.18 },{ cx:0.5,cy:0.68,s:0.17 }];
+      function edgeFade(y) {
+        if (y < FADE) return y / FADE;
+        if (y > H - FADE) return (H - y) / FADE;
+        return 1;
+      }
+
+      var NODE_COUNT = 28, CONN_DIST = 250;
+      var cls = [{ cx:0.2,cy:0.5,s:0.14 },{ cx:0.5,cy:0.5,s:0.15 },{ cx:0.8,cy:0.5,s:0.14 }];
 
       function mkNode() {
         var cl = cls[Math.floor(Math.random()*cls.length)];
-        var a = Math.random()*Math.PI*2, r = Math.sqrt(Math.random())*cl.s*Math.min(W,H);
-        var x = W*cl.cx+Math.cos(a)*r, y = H*cl.cy+Math.sin(a)*r;
+        var a = Math.random()*Math.PI*2, r = Math.sqrt(Math.random())*cl.s*W;
+        var x = W*cl.cx+Math.cos(a)*r, y = H*0.2+Math.random()*H*0.6;
         var hue = 210+(Math.random()-0.5)*30, sat = 25+Math.random()*20, lit = 55+Math.random()*15;
         var depth = Math.random(), ds = 0.5+depth*0.5;
         return {
@@ -98,7 +105,7 @@
           baseRad:(4+Math.random()*6)*ds, rad:0, ph:Math.random()*Math.PI*2,
           wAmp:0.15+Math.random()*0.2, wfx:0.0002+Math.random()*0.00025, wfy:0.00016+Math.random()*0.0002,
           pp:Math.random()*Math.PI*2, ps:0.006+Math.random()*0.008,
-          depth:depth, bAlpha:0.25+depth*0.35, act:0, hue:hue, sat:sat, lit:lit
+          depth:depth, bAlpha:0.4+depth*0.6, act:0, hue:hue, sat:sat, lit:lit
         };
       }
 
@@ -145,17 +152,17 @@
           if(e.life>=e.max){edges.splice(i,1);continue;}
           var s=e.life<50?e.life/50:(e.life>e.max-70?(e.max-e.life)/70:1);
           var dist=Math.hypot(e.a.x-e.b.x,e.a.y-e.b.y), pf=Math.max(0.3,1-dist/CONN_DIST);
-          var da=Math.min(e.a.bAlpha,e.b.bAlpha);
+          var da=Math.min(e.a.bAlpha,e.b.bAlpha)*Math.min(edgeFade(e.a.y),edgeFade(e.b.y));
           var mx2=(e.a.x+e.b.x)/2, my2=(e.a.y+e.b.y)/2;
           var edx=e.b.x-e.a.x, edy=e.b.y-e.a.y, eln=Math.sqrt(edx*edx+edy*edy)||1;
           ctx.beginPath(); ctx.moveTo(e.a.x,e.a.y);
           ctx.quadraticCurveTo(mx2+(-edy/eln)*e.curv, my2+(edx/eln)*e.curv, e.b.x, e.b.y);
-          ctx.strokeStyle='rgba(140,155,185,'+(s*pf*0.3*da)+')';
+          ctx.strokeStyle='rgba(140,155,185,'+(s*pf*0.45*da)+')';
           ctx.lineWidth=(1.2+pf*2.5)*s; ctx.stroke();
         }
         nextFire--; if(nextFire<=0){triggerRipple();nextFire=200+Math.random()*300;}
         for(var i=0;i<nodes.length;i++){
-          var n=nodes[i], al=n.bAlpha, ac=n.act;
+          var n=nodes[i], al=n.bAlpha*edgeFade(n.y), ac=n.act*edgeFade(n.y);
           if(ac>0.05){var gr=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.rad*(3+ac*5));
             gr.addColorStop(0,'hsla('+n.hue+','+(n.sat+15)+'%,'+(n.lit+15)+'%,'+(ac*0.3)+')');
             gr.addColorStop(1,'hsla('+n.hue+','+n.sat+'%,'+n.lit+'%,0)');
