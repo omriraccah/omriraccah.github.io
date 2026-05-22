@@ -16,6 +16,7 @@
     <![endif]-->
   </head>
   <body>
+    <canvas id="graph-bg"></canvas>
     <nav class="top-nav drop-in">
       <ul>
         <li><a href="/publications.html">Publications</a></li>
@@ -59,7 +60,6 @@
 
        </footer>
     </div>
-    <canvas id="graph-bg"></canvas>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
     <script>
       document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
@@ -78,18 +78,17 @@
       if (!c) return;
       var ctx = c.getContext('2d');
       var W, H;
-      var BAND_H = 250;
-      function resize() { W = c.width = c.offsetWidth; H = c.height = BAND_H; }
+      function resize() { W = c.width = window.innerWidth; H = c.height = window.innerHeight; }
       resize();
       window.addEventListener('resize', resize);
 
-      var NODE_COUNT = 30, CONN_DIST = 240;
-      var cls = [{ cx:0.2,cy:0.5,s:0.14 },{ cx:0.5,cy:0.5,s:0.15 },{ cx:0.8,cy:0.5,s:0.14 }];
+      var NODE_COUNT = 25, CONN_DIST = 260;
+      var cls = [{ cx:0.3,cy:0.38,s:0.2 },{ cx:0.65,cy:0.32,s:0.18 },{ cx:0.5,cy:0.68,s:0.17 }];
 
       function mkNode() {
         var cl = cls[Math.floor(Math.random()*cls.length)];
-        var a = Math.random()*Math.PI*2, r = Math.sqrt(Math.random())*cl.s*W;
-        var x = W*cl.cx+Math.cos(a)*r, y = H*cl.cy+Math.sin(a)*r*0.6;
+        var a = Math.random()*Math.PI*2, r = Math.sqrt(Math.random())*cl.s*Math.min(W,H);
+        var x = W*cl.cx+Math.cos(a)*r, y = H*cl.cy+Math.sin(a)*r;
         var hue = 210+(Math.random()-0.5)*30, sat = 25+Math.random()*20, lit = 55+Math.random()*15;
         var depth = Math.random(), ds = 0.5+depth*0.5;
         return {
@@ -97,7 +96,7 @@
           baseRad:(4+Math.random()*6)*ds, rad:0, ph:Math.random()*Math.PI*2,
           wAmp:0.15+Math.random()*0.2, wfx:0.0002+Math.random()*0.00025, wfy:0.00016+Math.random()*0.0002,
           pp:Math.random()*Math.PI*2, ps:0.006+Math.random()*0.008,
-          depth:depth, bAlpha:0.4+depth*0.6, act:0, hue:hue, sat:sat, lit:lit
+          depth:depth, bAlpha:0.25+depth*0.35, act:0, hue:hue, sat:sat, lit:lit
         };
       }
 
@@ -149,7 +148,7 @@
           var edx=e.b.x-e.a.x, edy=e.b.y-e.a.y, eln=Math.sqrt(edx*edx+edy*edy)||1;
           ctx.beginPath(); ctx.moveTo(e.a.x,e.a.y);
           ctx.quadraticCurveTo(mx2+(-edy/eln)*e.curv, my2+(edx/eln)*e.curv, e.b.x, e.b.y);
-          ctx.strokeStyle='rgba(140,155,185,'+(s*pf*0.45*da)+')';
+          ctx.strokeStyle='rgba(140,155,185,'+(s*pf*0.3*da)+')';
           ctx.lineWidth=(1.2+pf*2.5)*s; ctx.stroke();
         }
         nextFire--; if(nextFire<=0){triggerRipple();nextFire=200+Math.random()*300;}
