@@ -32,14 +32,19 @@ function resize() {
 resize();
 window.addEventListener('resize', resize);
 
-const NODE_COUNT = 35;
-const CONNECTION_DIST = 300;
+const NODE_COUNT = 40;
+const CONNECTION_DIST = 280;
 
+// Clusters concentrated in the bottom-right quadrant
 const clusterDefs = [
-  { cx: 0.3, cy: 0.38, spread: 0.18 },
-  { cx: 0.65, cy: 0.32, spread: 0.17 },
-  { cx: 0.5, cy: 0.68, spread: 0.16 },
+  { cx: 0.62, cy: 0.58, spread: 0.14 },
+  { cx: 0.75, cy: 0.68, spread: 0.13 },
+  { cx: 0.68, cy: 0.78, spread: 0.11 },
 ];
+
+// Load brain image
+const brainImg = new Image();
+brainImg.src = 'files/brain-bg.png';
 
 function clusterPoint() {
   const cl = clusterDefs[Math.floor(Math.random() * clusterDefs.length)];
@@ -251,8 +256,23 @@ function tryNewEdges() {
   }
 }
 
+function drawBrain() {
+  if (!brainImg.complete) return;
+  const scale = Math.min(W * 0.45, H * 0.7) / brainImg.naturalHeight;
+  const bw = brainImg.naturalWidth * scale;
+  const bh = brainImg.naturalHeight * scale;
+  const bx = W * 0.68 - bw / 2;
+  const by = H * 0.68 - bh / 2;
+  ctx.save();
+  ctx.globalAlpha = 0.12;
+  ctx.drawImage(brainImg, bx, by, bw, bh);
+  ctx.restore();
+}
+
 function animate(t) {
   ctx.clearRect(0, 0, W, H);
+
+  drawBrain();
 
   for (const n of nodes) n.update(t);
 
