@@ -55,13 +55,13 @@
       {{ content }}
 
       </section>
+      {% if page.url == "/" or page.url == "/index.html" %}
+      <canvas id="graph-bg"></canvas>
+      {% endif %}
        <footer>
 
        </footer>
     </div>
-    {% if page.url == "/" or page.url == "/index.html" %}
-    <canvas id="graph-bg"></canvas>
-    {% endif %}
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
     <script>
       document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
