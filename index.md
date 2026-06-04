@@ -1,7 +1,7 @@
 ## About me
 ***
 
-I am a cognitive neuroscientist focused on human perception and memory. I study how the brain transforms sequential and multisensory experience into lasting memories.
+I am a cognitive neuroscientist focused on human perception and memory. I study how the brain transforms **sequential** and **multisensory** experience into lasting memories.
 
 My work is further grounded in the view that memory systems operate in conjunction with other faculties, such as perception and attention, and therefore seeks to understand their interaction.
 
