@@ -23,7 +23,7 @@ Cao, W., **Raccah, O.**, Chen, P., Poeppel, D., & Tompary, A. (2025; In Revision
 
 **Raccah, O.\***, Seltenreich M.\*, Pelofi, C., Lerdahl, F., & Poeppel, D. (2025). Geometric principles of musical scales constitute a representational primitive in melodic processing. *iScience*, 28(11). [Link](https://www.cell.com/iscience/fulltext/S2589-0042(25)01962-5){:target="_blank"}
 
-**Raccah, O.\***, Chen, P.\*, Gureckis, M. T., Poeppel, D., & Vo, A.V. (2024). The 'Naturalistic Free Recall' dataset: four stories, hundreds of participants, and high-fidelity transcriptions. *Scientific Data*, 11(1), 1–9. [Link](https://www.nature.com/articles/s41597-024-04082-6){:target="_blank"}
+**Raccah, O.\***, Chen, P.\*, Gureckis, M. T., Poeppel, D., & Vo, A.V. (2024). The 'Naturalistic Free Recall' dataset: four stories, hundreds of participants, and high-fidelity transcriptions. *Nature Scientific Data*, 11(1), 1–9. [Link](https://www.nature.com/articles/s41597-024-04082-6){:target="_blank"}
 
 Salehi, S., Chen, P., **Raccah, O.**, & Poeppel, D. (2024). Spatiotemporal hierarchies of face representation in the human ventral temporal cortex. *Scientific Reports*, 14(1), 26501. [Link](https://www.nature.com/articles/s41598-024-77895-5){:target="_blank"}
 
