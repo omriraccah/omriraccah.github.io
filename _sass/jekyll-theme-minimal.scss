@@ -198,6 +198,35 @@ section {
   line-height:1.65;
 }
 
+#bio-visual {
+  width: 75%;
+  float: right;
+  position: relative;
+  height: 300px;
+  margin-top: -20px;
+  overflow: visible;
+}
+
+#bio-visual .brain-img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 420px;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#bio-visual #graph-bg {
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+  width: 500px;
+  height: 280px;
+  pointer-events: none;
+  z-index: 1;
+}
+
 small {
   font-size:14px;
 }
