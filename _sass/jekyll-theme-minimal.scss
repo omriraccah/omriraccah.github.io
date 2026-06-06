@@ -271,6 +271,13 @@ footer {
   pre, code {
     word-wrap:normal;
   }
+
+  .top-nav {
+    position: static;
+    text-align: center;
+    padding: 1em 0;
+    margin-bottom: 10px;
+  }
 }
 
 @media print, screen and (max-width: 480px) {
