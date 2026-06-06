@@ -8,6 +8,6 @@ I am a cognitive neuroscientist. I study how we form memories from complex exper
 
 I am currently a postdoctoral fellow at Yale University working with [Nicholas Turk-Browne](https://ntblab.yale.edu/){:target="_blank"}, supported by an NIH NRSA fellowship. I completed my Ph.D. in 2023 at New York University with [David Poeppel](https://as.nyu.edu/faculty/david-poeppel.html){:target="_blank"}.
 
-<img src="/files/brain-illustration.png" alt="Brain illustration" style="display:block; max-width:320px; margin:30px auto 10px; opacity:0.7;">
+<img src="/files/brain-illustration.png" alt="Brain illustration" style="display:block; max-width:500px; margin:30px 0 10px auto; opacity:0.6;">
 
 ***
