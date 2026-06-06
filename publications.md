@@ -15,6 +15,8 @@ Xue, A.M., Hsu, S., Rarocque, K.F., **Raccah, O.**, Gonzalez, A., Parvizi, J., &
 
 Cao, W., **Raccah, O.**, Chen, P., Poeppel, D., & Tompary, A. (2025; In Revision). The privileged role of thematic conceptual relations in episodic memory. [PsyArXiv](https://psyarxiv.com){:target="_blank"}
 
+Verosky, N., & **Raccah, O.** (2026; Under review). Perspective: Music and the structure of episodic memory.
+
 ***
 
 ### Published papers
