@@ -2,6 +2,8 @@
 layout: default
 ---
 
+<div class="publications-page" markdown="1">
+
 ## Publications
 ***
 
@@ -52,3 +54,5 @@ Fox, K. C.R.\*, Yih, J.\*, **Raccah, O.**, Pendekanti, S., Limbach, L., Maydam, 
 ***
 
 \* denotes equal contribution
+
+</div>
