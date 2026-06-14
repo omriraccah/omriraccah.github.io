@@ -211,13 +211,11 @@ section {
 }
 
 .brain-watermark {
-  position: absolute;
-  bottom: -20px;
-  right: -40px;
-  width: 380px;
-  opacity: 0.08;
+  display: block;
+  width: 350px;
+  opacity: 0.35;
   pointer-events: none;
-  z-index: -1;
+  margin: 10px auto 0;
 }
 
 small {
