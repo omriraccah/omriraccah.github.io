@@ -232,7 +232,7 @@ footer {
 @media print, screen and (max-width: 960px) {
 
   .top-nav {
-    position: static;
+    position: static !important;
     text-align: center;
     padding: 1em 0;
     margin-bottom: 10px;
@@ -292,7 +292,7 @@ footer {
   }
 
   .top-nav {
-    position: static;
+    position: static !important;
     text-align: center;
     padding: 1em 0;
     margin-bottom: 10px;
