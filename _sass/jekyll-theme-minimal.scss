@@ -1,9 +1,10 @@
 @import "fonts";
 @import "rouge-github";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 body {
   background-color: #ffffff;
   padding: 50px;
-  font: 17px/1.5 'Noto Sans', "HelveticaNeue-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 17px/1.5 'Inter', "HelveticaNeue-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#424242;
   font-weight:400;
 }
