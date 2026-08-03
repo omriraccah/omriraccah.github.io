@@ -9,9 +9,9 @@ layout: default
 
 ### Preprints & under review
 
-Verosky, N., & **Raccah, O.** (2026; Submitted). Perspective: Music and the structure of episodic memory.
+**Raccah, O.**, Agarwal, A., Zhu, Y., & Turk-Browne, N. (2026; Revised). Multisensory coding of audiovisual movies in the human hippocampus. [BioRxiv](https://www.biorxiv.org/content/10.64898/2026.03.01.708855v1){:target="_blank"}
 
-**Raccah, O.**, Agarwal, A., Zhu, Y., & Turk-Browne, N. (2026; In Revision). Multisensory coding of audiovisual movies in the human hippocampus. [BioRxiv](https://www.biorxiv.org/content/10.64898/2026.03.01.708855v1){:target="_blank"}
+Verosky, N., & **Raccah, O.** (2026; Under Review). Perspective: Music and the structure of episodic memory.
 
 **Raccah, O.\***, Chen, P.\*, Vo, A.V., Poeppel, D., & Gureckis, M. T. (2025; In Revision). Distinct paths to false memory revealed in hundreds of narrative recollections. [PsyArXiv](https://osf.io/preprints/psyarxiv/sfqea){:target="_blank"}
 
